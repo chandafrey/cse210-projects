@@ -1,4 +1,6 @@
 using System;
+using System.Net;
+using System.Runtime.InteropServices;
 
 class Program
 {
@@ -21,16 +23,30 @@ class Program
 // Stretch Challenge:
 // 1.  Add a counter to keep track of how many guesses the user has made.  When they guess the magic number, tell them how many guesses it took.
 // 2.  After the game is over, ask the user if they want to play again. Then, loop back and play the whole game again and continue this loop as long as they keep saying "yes".
+// 3.  Add a way to keep track of the best score (the lowest number of guesses) and display that to the user when they finish playing.
+        
+        // This is how it is written in my lesson.  Chatgpt says this is fine, but may be more
+        // wordy than necessary for just numbers
+        // Random randomGenerator = new Random();
+        // int number = randomGenerator.Next(1, 11);
+        
+        
+        
+        
+        Random random = new Random();
+        int magicNumber = random.Next(1, 11); // Generate a random number between 1 and 100
+        int guess = 0;
+        int attempts = 0;
+        string playAgain = "yes";
 
-        int magicNumber = 20;
-        string response = "yes";
-
-        while (response == "yes")
+        while (playAgain.ToLower() == "yes")
         {
             Console.WriteLine("Guess the magic number between 1 and 100:");
-            int guess = int.Parse(Console.ReadLine());
+            while (guess != magicNumber)
+            {
+                guess = Convert.ToInt32(Console.ReadLine());
+                attempts++;
 
-            
                 if (guess < magicNumber)
                 {
                     Console.WriteLine("Higher! Try again.");
@@ -41,58 +57,25 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine($"Congratulations! You guessed the magic number {magicNumber}.");
-             }
+                    Console.WriteLine($"Congratulations! You guessed the magic number {magicNumber} in {attempts} attempts.");
+                }
+            }
 
-            Console.Write("Do you want to play again? (yes/no)");
-            response = Console.ReadLine();
-        }
-     
+            Console.WriteLine("Do you want to play again? (yes/no)");
+            playAgain = Console.ReadLine();
+            if (playAgain.ToLower() == "yes")
+            {
+                magicNumber = random.Next(1, 101); // Generate a new random number for the next game
+                guess = 0;
+                attempts = 0;
+            }        
+        
+    }
+    }
+}
+
+
 
         
             
         
-
-
-
-        // Random random = new Random();
-        // int magicNumber = random.Next(1, 101); // Random number between 1 and 100
-        // int guess = 0;
-        // int attempts = 0;
-        // bool playAgain = true;
-
-        // while (playAgain)
-        // {
-        //     Console.WriteLine("Guess the magic number between 1 and 100:");
-        //     while (guess != magicNumber)
-        //     {
-        //         guess = int.Parse(Console.ReadLine());
-        //         attempts++;
-
-        //         if (guess < magicNumber)
-        //         {
-        //             Console.WriteLine("Higher! Try again.");
-        //         }
-        //         else if (guess > magicNumber)
-        //         {
-        //             Console.WriteLine("Lower! Try again.");
-        //         }
-        //         else
-        //         {
-        //             Console.WriteLine($"Congratulations! You guessed the magic number {magicNumber} in {attempts} attempts.");
-        //         }
-        //     }
-
-        //     Console.WriteLine("Do you want to play again? (yes/no)");
-        //     string response = Console.ReadLine().ToLower();
-        //     playAgain = response == "yes";
-
-        //     if (playAgain)
-        //     {
-        //         magicNumber = random.Next(1, 101);
-        //         guess = 0;
-        //         attempts = 0;
-        //     }
-        // }
-    }
-}
