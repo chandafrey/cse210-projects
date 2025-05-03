@@ -35,7 +35,9 @@ class Program
 // Finally, after the whole series of if, else if, else statements, have a single print statement that prints the letter grade once.
 
         Console.Write("What is your grade percentage? ");
-        int grade = int.Parse(Console.ReadLine());
+        string answer = Console.ReadLine();
+        int grade = int.Parse(answer);
+        
 
 // This variable is for the Core Requirements #3
         string letter = "";
