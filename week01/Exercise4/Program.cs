@@ -22,7 +22,8 @@ class Program
     
     // Create an EMPTY list to store the numbers.
         List<int> numbers = new List<int>();
-        // this is same as saying numbers = [] in python when you want to create an empty list
+        // this is same as saying:
+        // numbers = [] in python when you want to create an empty list
 
     // Start with asking the user for a number, and THEN use a while loop to keep asking for numbers until they enter 0.
         Console.WriteLine("Enter a list of numbers, type 0 when finished.");
@@ -31,7 +32,7 @@ class Program
     // Also, it needs to be equal to something other than 0, so the loop will Run at least once.
         int number = -1;
 
-    // Now, use a while loop to keep asking for numbers until the user enters 0.
+    // NOW, use a while loop to keep asking for numbers until the user enters 0.
         while (number != 0)
         {
             // Ask the user for a number.
@@ -42,21 +43,59 @@ class Program
             // number = int.Parse(input); // This is the same as saying number = int(input) in python
             number = int.Parse(input);
 
-    // If the user enters a number that is not 0, add it to the list.
+    // If the user enters a number that is not 0, add it to the numbers list.
             if (number != 0)
             {
-                // numbers.Add(number); // This is the same as saying numbers.append(number) in python
                 numbers.Add(number);
+                // This is the same as saying:
+                // numbers.append(number) in python
             }
-       }
+        }
     // Print the list of numbers to the console so we can see what we entered.
     // Console.WriteLine(numbers); // This will not work, because it will not print the list in a readable format.
     // Instead, we can use string.Join to convert the list to a string and print it.
-    // Console.WriteLine(string.Join(", ", numbers)); // This is the same as saying print(", ".join(numbers)) in python
     // This will print the list of numbers in a readable format.
         Console.WriteLine("You entered the following numbers: ");
         Console.WriteLine(string.Join(", ", numbers));
+        // This is the same as saying print(", ".join(numbers)) in python
 
+
+    // Now that we have a list of numbers, We can use a for loop to iterate through the list and do some calculations.
+    // We can also use LINQ to do some calculations with the list.  
+
+    // 1.  COMPUTE THE SUM OF THE NUMBERS IN THE LIST. 
+    // Remember to declare the variable to store the sum outside of the loop, so it can be used later in the program.
+        int sum = 0;
+        // This is the same as saying sum = 0 in python
+
+        for (int i = 0; i < numbers.Count; i++)
+        // This is the same as saying for i in range(len(numbers)) in python
+        // which means, start at 0 and go throught the list one by one until you reach the end of the list.
+        // i is the loop counter and increases by 1 each time through the loop.
+        // numbers.Count is the same as saying len(numbers) in python
+        {
+            sum += numbers[i]; 
+            // This is the same as saying sum = sum + numbers[i] in python
+            // which means "add the number at index i to the sum"
+            // or in other words, "sum the numbers in the list"
+        }
+        // Print the sum to the console.
+        Console.WriteLine($"The sum of the numbers is: {sum}");
+
+    //  2.  COMPUTE THE AVERAGE OF THE NUMBERS IN THE LIST.
+    // The average is the sum of the numbers divided by the number of numbers in the list.
+        int average = sum / numbers.Count;
+        // This is the same as saying average = sum / len(numbers) in python
+        // Print the average to the console.
+        Console.WriteLine($"The average of the numbers is: {average}");
+
+    // 3.  FIND THE MAXIMUN NUMBER IN THE LIST.
+        int max = numbers.Max();
+        // print the largest number to the console.
+        Console.WriteLine($"The largest number is: {max}");
+
+
+// ---------------------------------------------------------------------
 // Stretch Challenge
     // 1.  Have the user enter both positive and negative numbers, 
     // then find the smallest positive number (the positive number that is closest to zero).
@@ -66,27 +105,32 @@ class Program
 // ---------------------------------------------------------------------
 
 
-    // I think I need a foreach loop to iterate through the list of numbers and find the smallest positive number.
-    // I will also need a variable to store the smallest positive number.
-        int smallestPositive = int.MaxValue; // This is the same as saying smallestPositive = float("inf") in python
+    // 1.  FIND THE SMALLEST POSITIVE NUMBER IN THE LIST.
+    // Create a variable to store the smallest positive number and set it to the largest possible integer value. 
+        int smallestPositive = int.MaxValue;
+        // int.MaxValue is the largest possible integer value in C#.
 
-        foreach (int num in numbers)
+        // Now use a "for loop" to iterate through the list.
+        // This is the same as saying for i in range(len(numbers)) in python
+        // numbers.Count is the same as saying len(numbers) in python
+        // int i = 0 means create a variable i (the loop counter) and start it at 0 which is the first index of the list.
+        // i < numbers.count - This is the condition that keeps the loop going.  
+        // numbers.Count is how many items are in the list, so keep looping while i is less than the number of items.
+        // i++ means increase the value of i by 1 each time through the loop.
+        for (int i = 0; i < numbers.Count; i++)
         {
-            if (num > 0 && num < smallestPositive)
+            if (numbers[i] > 0 && numbers[i] < smallestPositive)
+            // This is saying "if the number is greater than 0 (a positive number) and smaller than the 
+            // smallest positive number found so far (which is initially set to the largest possible integer value),
+            // then set smallestPositive to that number.
             {
-                smallestPositive = num;
+                smallestPositive = numbers[i];
             }
         }
-
-        if (smallestPositive == int.MaxValue)
-        {
-            Console.WriteLine("No positive numbers were entered.");
-        }
-        else
-        {
-            Console.WriteLine($"The smallest positive number is: {smallestPositive}");
-        }
-
+        // Print the smallest positive number to the console.
+        Console.WriteLine($"The smallest positive number is: {smallestPositive}");
+        
+// ---------------------------------------------------------------------
         // Another way to do this is to use LINQ to find the smalles positive number.
         // We can use the WHERE method to filter the list and then use the MIN method to find the smallest number.
     
@@ -101,9 +145,12 @@ class Program
         // Using the numbers list from above, we can filter it to only include positive numbers.
         // My list might look like this: 
         // List<int> numbers = new List<int> {5, 6, -3, 7, -2};
-        // Use .Where() to filter the list to only include positive numbers and reate a new list called positiveNumbers.
+       
+        // Use .Where() to filter the list to only include positive numbers and create a new list called positiveNumbers.
         List<int> positiveNumbers = numbers.Where(n => n > 0).ToList(); 
-        // This is the same as saying positiveNumbers = [n for n in numbers if n > 0] in python
+        // This is the same as saying:
+        // positiveNumbers = [n for n in numbers if n > 0] in python
+        // This means "Create a new list called positiveNumbers that contains only the numbers from the original list that are greater than 0."
         // numbers is the original list
         // .Where(n => n > 0) means "Go through each number n in the list and keep it only if it's greater than 0."
         // .ToList() converts the result back into a normal list you can use.
@@ -129,17 +176,11 @@ class Program
         }
 
 
-    // Now, I will sort the list of numbers and print the sorted list to the console.
-        numbers.Sort(); // This is the same as saying numbers.sort() in python
+    // 2.  SORT THE LIST OF NUMBERS.
+        numbers.Sort(); 
+        // This is the same as saying numbers.sort() in python
         Console.WriteLine("The sorted list of numbers is: ");
         Console.Write(string.Join(", ", numbers));   
-
-       
-
- 
-
-
-
-        
+         
     }
 }
