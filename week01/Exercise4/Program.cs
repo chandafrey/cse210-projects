@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq; // This is the same as saying import random in python
 
 
@@ -65,7 +66,8 @@ class Program
 
     // 1.  COMPUTE THE SUM OF THE NUMBERS IN THE LIST. 
     // Remember to declare the variable to store the sum outside of the loop, so it can be used later in the program.
-        int sum = 0;
+    // Use "double" to store the sum, so it can hold a large decimal number.
+        double sum = 0;
         // This is the same as saying sum = 0 in python
 
         for (int i = 0; i < numbers.Count; i++)
@@ -84,7 +86,8 @@ class Program
 
     //  2.  COMPUTE THE AVERAGE OF THE NUMBERS IN THE LIST.
     // The average is the sum of the numbers divided by the number of numbers in the list.
-        int average = sum / numbers.Count;
+    // You need to use "double" here as well, for "average" to hold a decimal number.
+        double average = sum / numbers.Count;
         // This is the same as saying average = sum / len(numbers) in python
         // Print the average to the console.
         Console.WriteLine($"The average of the numbers is: {average}");
@@ -177,10 +180,18 @@ class Program
 
 
     // 2.  SORT THE LIST OF NUMBERS.
-        numbers.Sort(); 
+        numbers.Sort();
         // This is the same as saying numbers.sort() in python
+        // Write this line before the foreach loop so it only prints the sorted list once.
         Console.WriteLine("The sorted list of numbers is: ");
-        Console.Write(string.Join(", ", numbers));   
-         
+
+        foreach (int num in numbers)
+        {
+            // This will sort the list in ascending order (from smallest to largest).
+            // If you want to sort it in descending order (from largest to smallest), you can use the Reverse() method after sorting.
+            // numbers.Reverse(); 
+            // Console.Write(string.Join(", ", numbers));  
+            Console.WriteLine(num); 
+        }
     }
 }
