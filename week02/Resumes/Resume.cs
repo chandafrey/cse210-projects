@@ -3,7 +3,8 @@ using System.Reflection.Metadata.Ecma335;
 // Create a new file for your Resume class. Each class should be in its own file and the file name should match the name of the class.
 // Create the Resume class.
 // Create the member variable for the person's name.
-// Create the member variable for the list of Jobs. (Hint: the data type for this should be List<Job> , and it is probably easiest to initialize this to a new list right when you declare it..)
+// Create the member variable for the list of Jobs. (Hint: the data type for this should be List<Job> , 
+// and it is probably easiest to initialize this to a new list right when you declare it..)
 
 // Return to your Resume class and add a method to display its details.
 // This method should not have any parameters and should not return anything.

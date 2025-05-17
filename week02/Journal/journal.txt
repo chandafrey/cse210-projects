@@ -1,0 +1,5 @@
+5/17/2025,   What was the best part of your day?,   food
+5/17/2025,  What is one thing you would change about your day?,  coding
+5/17/2025, Who helped you today and how?, john
+5/17/2025, , josh and the boys are here
+5/17/2025, What was the best part of your day?, finished my code
