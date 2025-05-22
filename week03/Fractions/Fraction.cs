@@ -15,7 +15,7 @@ public class Fraction
     // The constructor has the same name as the class and does not have a return type
     // We are going to have 3 constructors:
         // 1.  Constructor that has no parameters that initializes the number to 1/1.
-        // "initializes" means we are setging the values of the variables here
+        // "initializes" means we are setting the values of the variables here
         public Fraction()
         {
             _top = 1;

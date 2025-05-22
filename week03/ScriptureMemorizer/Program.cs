@@ -24,12 +24,12 @@ class Program
         // What are good candidates for the classes? - Is there just one? ScriptureMemorizer
         // What are the main jobs or functions of the classes? - read a list of scriptures, display a random scripture, hide a random word
         // THE MENTOR SECTION SAYS I NEED 3 classes
-        // -Scripture 
-        // -Reference
-        // -Word
+        // -Scripture (word, reference class)
+        // -Reference (book, chapter, verse class) John 3:16
+        // -Word (every word in the verse)
         
         
-            Console.WriteLine("Please press 'enter' to continue or type 'quite to finish:");
+            Console.WriteLine("Please press 'enter' to continue or type 'quit to finish:");
             input = Console.ReadLine();
 
             // I want to check if the user pressed "enter" or "quit" - 
@@ -39,7 +39,26 @@ class Program
             if (string.IsNullOrEmpty(input))
             {
                 Console.WriteLine("You pressed enter...memorizer is starting.");
-                // Here you would call the method to start the memorization process     
+
+                // Here you would call the method to start the memorization process  
+                // Start with the reference and then the word text
+
+                // Create a new instance of the Reference class and pass in the book, chapter, and verse
+                // Don't forget to use "" for the book name
+                // Use commas to separate the parameters
+                // type 0 for the end verse if there is no end verse
+                Reference reference = new Reference("1 Nephi", 2, 15, 0);
+
+                // Create a new instance of the Word class and pass in the word
+                // Use the word "tent" as an example
+                // Use the constructor that has one parameter for the word
+                Word word = new Word("tent");
+
+                // Call the GetDisplayText method to display the reference and word
+                // Console.WriteLine($"The reference is: {reference.GetDisplayText()}");
+                // Console.WriteLine($"The word is: {word.GetDisplayText()}");
+                Console.WriteLine($"{reference.GetDisplayText()} {word.GetDisplayText()}");
+            
             }
             else if (input == "quit")
             {
