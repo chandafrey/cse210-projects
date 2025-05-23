@@ -58,7 +58,11 @@ class Program
                 // Console.WriteLine($"The reference is: {reference.GetDisplayText()}");
                 // Console.WriteLine($"The word is: {word.GetDisplayText()}");
                 Console.WriteLine($"{reference.GetDisplayText()} {word.GetDisplayText()}");
-            
+
+                
+                // 
+                // Scripture scripture = new Scripture(reference, word.GetDisplayText());
+                // Scripture scripture = new Scripture(reference, text);
             }
             else if (input == "quit")
             {

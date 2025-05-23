@@ -13,7 +13,7 @@ public class PromptGenerator
     // *remember this is just a field declaration declaring 
     // what the variable will be called and its data type
     // I am not setting a value for it yet - that happens in the constructor
-    // -promt list
+    // -prompt list
     public List<string> _prompts;
 
 
