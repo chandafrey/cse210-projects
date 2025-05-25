@@ -1,3 +1,8 @@
+// ***EXCEEDING requirements
+// I made it so my HideRandomWords method will only hide words that are not already hidden.
+
+
+
 using System;
 
 class Program
@@ -5,64 +10,95 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
+        // Your program must do the following:
+
+        // Store a scripture, including both the reference (for example "John 3:16") and the text of the scripture.
+        // Accommodate scriptures with multiple verses, such as "Proverbs 3:5-6".
+        // Clear the console screen and display the complete scripture, including the reference and the text.
+        // Prompt the user to press the enter key or type quit.
+        // If the user types quit, the program should end.
+        // If the user presses the enter key (without typing quit), the program should hide a few random words in the scripture, 
+        // clear the console screen, and display the scripture again. (Hiding a word means that the word should be replace by 
+        // underscores (_) and the number of underscores should match the number of letters in that word.)
+        // The program should continue prompting the user and hiding more words until all words in the scripture are hidden.
+        // When all words in the scripture are hidden, the program should end. (The final display of the scripture should show 
+        // the scripture with all words hidden.)
+        
+        // When selecting the random words to hide, for the core requirements, you can select any word at random, even if the 
+        // word was already hidden. 
+        
+        // *******(As a stretch challenge, try to randomly select from only those words that are not already hidden.)
+                
+        // In addition your program must:
+
+        // Use the principles of Encapsulation, including proper use of classes, methods, public/private access modifiers, and follow good style throughout.
+        // Contain at least 3 classes in addition to the Program class: one for the scripture itself, one for the reference (for example "John 3:16"), and to represent a word in the scripture.
+        // Provide multiple constructors for the scripture reference to handle the case of a single verse and a verse range ("Proverbs 3:5" or "Proverbs 3:5-6").
+        // --------------------------------------------------        
+        
+        
+        
+        // Put the information here before the while loop, then it will be available to the whole program
+
+        // Create a new instance of the REFERENCE and pass in the book, chapter, verse, and end verse as parameters
+            // Don't forget to use "" for the book name
+            // Use commas to separate the parameters
+            // type 0 for the end verse if there is no end verse
+        Reference reference = new Reference ("Isaiah", 41, 10, 13);
+
+        // Create a string variable to hold the text of the scripture
+        string text = "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness." + " For I the Lord thy God will hold thy right hand, saying unto thee, Fear not; I will help thee.";
+
+        // Creata a new instance of the Scripture class and pass in the reference and text
+        Scripture scripture = new Scripture(reference, text);
 
 
+        // -----------------------------------------------
+        // Display a welcome message to the console
+        // This is a good place to put the welcome message so it is displayed only once     
+        Console.WriteLine("Welcome to the Scripture Memorizer!");
+
+        // Display the scripture reference and text to the console
+        Console.WriteLine($"The reference and scripture is: {reference.GetDisplayText()}  {scripture.GetDisplayText()}");
+
+        // Declare a string variable to hold the user's input
+        // Initialize it to an empty string so it has a starting value that allows
+        // the while loop to begin.
         string input = "";
         while (input != "quit")
-        {
-        // The Scripture Memorizor program will display a random scripture from the list of scriptures.
-        // 
-        // The user inputs are either "enter" to continue or "quite" to finish the program.
-        // The output will be:
-        // - a random scripture from  the list of scriptures.
-        // - a prompt to press "enter" to continue or "quite" to finish the program.
-        // - if the user inputs "enter" the program will display the verse with random words hidden.
-        // - if the user inputs "quit" the program will finish.
-        // - if the user "inputs "enter" until "all the words have been hidden" the program will finish.
-        // The program ends when the user inputs "quit" or "all the words have been hidden".
+        { 
+            // Console.WriteLine("Welcome to the Scripture Memorizer!");
 
-        // What are good candidates for the classes? - Is there just one? ScriptureMemorizer
-        // What are the main jobs or functions of the classes? - read a list of scriptures, display a random scripture, hide a random word
-        // THE MENTOR SECTION SAYS I NEED 3 classes
-        // -Scripture (word, reference class)
-        // -Reference (book, chapter, verse class) John 3:16
-        // -Word (every word in the verse)
-        
-        
+            // Display the scripture reference and text to the console
+            // Console.WriteLine($"The reference and scripture is: {reference.GetDisplayText()}  {scripture.GetDisplayText()}");
+
+            // Prompt the user to press 'enter' to continue or type 'quit' to finish
+            // Use Console.ReadLine() to get the user's input 
+            Console.WriteLine();
             Console.WriteLine("Please press 'enter' to continue or type 'quit to finish:");
             input = Console.ReadLine();
-
-            // I want to check if the user pressed "enter" or "quit" - 
+    
+            // Check if the user pressed "enter" or "quit" - 
             // Use the string.IsNullOrEmpty method to check if the input is empty
             // If the user pressed "enter" the input will be empty
-
             if (string.IsNullOrEmpty(input))
             {
-                Console.WriteLine("You pressed enter...memorizer is starting.");
 
-                // Here you would call the method to start the memorization process  
-                // Start with the reference and then the word text
-
-                // Create a new instance of the Reference class and pass in the book, chapter, and verse
-                // Don't forget to use "" for the book name
-                // Use commas to separate the parameters
-                // type 0 for the end verse if there is no end verse
-                Reference reference = new Reference("1 Nephi", 2, 15, 0);
-
-                // Create a new instance of the Word class and pass in the word
-                // Use the word "tent" as an example
-                // Use the constructor that has one parameter for the word
-                Word word = new Word("tent");
-
-                // Call the GetDisplayText method to display the reference and word
-                // Console.WriteLine($"The reference is: {reference.GetDisplayText()}");
-                // Console.WriteLine($"The word is: {word.GetDisplayText()}");
-                Console.WriteLine($"{reference.GetDisplayText()} {word.GetDisplayText()}");
-
-                
-                // 
-                // Scripture scripture = new Scripture(reference, word.GetDisplayText());
-                // Scripture scripture = new Scripture(reference, text);
+                if (scripture.IsCompletelyHidden() == true)
+                {
+                    // If the scripture is completely hidden, we will display a message and exit the loop
+                    Console.WriteLine("All words have been hidden. Goodbye!");
+                    break;
+                }
+                // If the user pressed "enter", Hide a few random words in the scripture
+                // We will use the HideRandomWords method from the Scripture class
+                scripture.HideRandomWords(5);
+                // Clear the console screen
+                Console.Clear();
+                // Display the scripture reference and text again
+                Console.WriteLine($"Update with hidden words: {reference.GetDisplayText()}  {scripture.GetDisplayText()}");
+              
+            
             }
             else if (input == "quit")
             {

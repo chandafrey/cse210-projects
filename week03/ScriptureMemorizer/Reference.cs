@@ -57,34 +57,34 @@ public class Reference
     }
      
 
-        // 3  BEHAVIORS...
-        // -GET the display text(as a string)
-            // 1.  Method to Get the reference
-            // When we use the word "Get" in the method name, 
-            // it is a good indication that we are going to RETURN something
-            // The purpose is to return a value (specifically a string), not to print it.
-            // ----------------------------------------------------
-            // Rule of Thumb:
-            // If a method is called **GetSomething()**, then its job is to return data, not display it.
-            // Let the caller (e.g., your Main method) decide whether to print, store, or manipulate that data.
-            // -----------------------------------------------------
-        public string GetDisplayText()
+    // 3  BEHAVIORS...
+    // -GET the display text(as a string)
+        // 1.  Method to Get the reference
+        // When we use the word "Get" in the method name, 
+        // it is a good indication that we are going to RETURN something
+        // The purpose is to return a value (specifically a string), not to print it.
+        // ----------------------------------------------------
+        // Rule of Thumb:
+        // If a method is called **GetSomething()**, then its job is to return data, not display it.
+        // Let the caller (e.g., your Main method) decide whether to print, store, or manipulate that data.
+        // -----------------------------------------------------
+    public string GetDisplayText()
+    {
+        // If the _endVerse is 0, we will just return the book, chapter, and verse
+        // Otherwise, we will return the book, chapter, verse, and end verse
+        // -----------------------------------------------------
+        // We need to use an if/else statement so we can print the correct format
+        // for 1 verse or a range of verses...if we didn't, then the output for a single
+        // verse would be the same as a range of verses and look something like this:
+        // "John 3:16-0" which is not correct
+        // -----------------------------------------------------
+        if (_endVerse == 0)
         {
-            // If the _endVerse is 0, we will just return the book, chapter, and verse
-            // Otherwise, we will return the book, chapter, verse, and end verse
-            // -----------------------------------------------------
-            // We need to use an if/else statement so we can print the correct format
-            // for 1 verse or a range of verses...if we didn't, then the output for a single
-            // verse would be the same as a range of verses and look something like this:
-            // "John 3:16-0" which is not correct
-            // -----------------------------------------------------
-            if (_endVerse == 0)
-            {
-                return $"{_book} {_chapter}:{_verse}";
-            }
-            else
-            {
-                return $"{_book} {_chapter}:{_verse}-{_endVerse}";
-            }
+            return $"{_book} {_chapter}:{_verse}";
         }
+        else
+        {
+            return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+        }
+    }
 }
