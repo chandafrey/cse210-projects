@@ -19,6 +19,13 @@ public class Video
 
 
     // CONSTRUCTOR
+    // ----------------------------------
+    // We are NOT going to add List<Comment> comments in the parameters because:
+        // Encapsulation: You’re keeping control over how the comments list is managed inside the Video class.
+        // Flexibility: You can start with an empty list and add comments later using your AddComment() method.
+        // Cleaner constructor: Fewer parameters make the constructor easier to use and read.
+        // Avoids confusion: If you always expect comments to be added after the video is created, it avoids needing to pass a list up front.
+    // ----------------------------------
     public Video(string title, string author, int length)
     {
         // We are setting the _title, _author, and _length variables to the values
