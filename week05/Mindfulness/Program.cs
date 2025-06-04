@@ -1,5 +1,7 @@
 // **EXCEEDINGING REQUIREMENTS**
-// I havent' figured this out yet
+// I exceeded requirements by adding to a new list in ListingEntry
+// -date, current prompt, and responses from the Listing Activity
+// -and then saved those "journal" entries to a text file... listing_journal.txt
 
 // Use this line pretty much everywhere in your code...also used for:
 // Console, Random, DateTime List, etc.
