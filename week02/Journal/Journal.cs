@@ -94,7 +94,7 @@ public class Journal
         // "outputFile" will allow us to write the entries to the file(instead of the console)
         // The file name will be passed in as a parameter
         // The using statement will ensure that the file is closed after writing
-        using (StreamWriter outputFile = new StreamWriter(fileName))
+        using (StreamWriter outputFile = new StreamWriter(fileName, true))
         {
             // Loop through each entry in the _entries list and write it to the file
             foreach (Entry entry in _entries)
