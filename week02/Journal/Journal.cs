@@ -121,7 +121,7 @@ public class Journal
     // The LoadFromFile() method will take in a file name as a parameter
 
     {
-    //   START with checking if the file exists
+        // START with checking if the file exists
         // The File class is part of the System.IO namespace
         // The File.Exists() method will check if the file exists
         // The file name will be passed in as a parameter

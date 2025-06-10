@@ -1,0 +1,10 @@
+500
+AwardsGiven:0,1,2,3
+PointsRequired:200,300,400,500
+Reward: 1, 200
+Reward: 2, 300
+Reward: 3, 400
+Reward: 4, 500
+Checklist Goal:  bed, make it, 300, 50, 2, 4
+Simple Goal:  teeth, brush them, 100, True
+Simple Goal:  code, finish, 50, True
