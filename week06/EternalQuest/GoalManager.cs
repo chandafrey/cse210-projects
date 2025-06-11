@@ -206,8 +206,9 @@ public class GoalManager
         Console.WriteLine($"You have {_score} points.");
     }
 
+    // **Didn't use this method
+    // Because it seems redundant with ListGoalDetails.
     // 4.  ListGoalNames()
-    // IF user keys "2" (LIST GOALS)
     // The goals are:
     // 1.  [X] Give a talk  (Speak in Sacrament when asked)
     // 2.  [ ] Study the scriptures (Study for at least 10 minutes)
